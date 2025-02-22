@@ -6,25 +6,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/admin")
-public class AdminController {
+public class AdminController extends CommonController {
     private final AdminService adminService;
 
     public AdminController(AdminService adminService) {
+        super(adminService);
         this.adminService = adminService;
-    }
-
-    @GetMapping("/getAllEvents")
-    public ResponseEntity<List<Event>> getAllEvents() {
-        return new ResponseEntity<>(adminService.getAllEvents(), HttpStatus.OK);
-    }
-
-    @GetMapping("/getEventById/{id}")
-    public ResponseEntity<Event> getEventById(@PathVariable int id) {
-        return new ResponseEntity<>(adminService.getEventById(id), HttpStatus.OK);
     }
 
     @PostMapping("/addEvent")
