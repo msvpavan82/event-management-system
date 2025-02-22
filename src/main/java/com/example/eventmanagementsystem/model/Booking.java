@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @Table(name = "bookings")
 public class Booking {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int eventId;
     @JoinColumn(name = "person_id")
