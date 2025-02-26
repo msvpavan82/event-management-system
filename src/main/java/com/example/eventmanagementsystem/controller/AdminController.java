@@ -12,7 +12,6 @@ public class AdminController extends CommonController {
     private final AdminService adminService;
 
     public AdminController(AdminService adminService) {
-        super(adminService);
         this.adminService = adminService;
     }
 

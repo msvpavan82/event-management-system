@@ -5,11 +5,10 @@ import com.example.eventmanagementsystem.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AdminService extends CommonService {
+public class AdminService {
     private final EventRepository eventRepository;
 
     public AdminService(EventRepository eventRepository) {
-        super(eventRepository);
         this.eventRepository = eventRepository;
     }
 

@@ -12,10 +12,12 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
     private final BookingRepository bookingRepository;
+    private final Booking booking;
 
-    public UserService(UserRepository userRepository, BookingRepository bookingRepository) {
+    public UserService(UserRepository userRepository, BookingRepository bookingRepository, Booking booking) {
         this.userRepository = userRepository;
         this.bookingRepository = bookingRepository;
+        this.booking = booking;
     }
 
     public String bookEvent(int userId, Booking booking) {
@@ -38,5 +40,12 @@ public class UserService {
             return "Booked the event successfully!";
         }
         return "Failed to book the tickets";
+    }
+
+    public String cancelBooking(int userId, int eventId) {
+        if(bookingRepository.deleteBooking(userId, eventId) == 1) {
+            return "You have cancelled your booking";
+        }
+        return "You don't have a booking to cancel";
     }
 }
